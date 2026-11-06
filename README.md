@@ -23,8 +23,12 @@ Hướng dẫn skill đầy đủ (để bạn đọc / dán vào Project): http
 3. Mở chat mới, gõ `soi ads store aluckgoodate.com`.
 
 ### ChatGPT
-- **Cần gói Plus / Pro / Business** — ChatGPT Free chưa thêm được MCP tự chọn. Người dùng ChatGPT Free: nói thẳng điều này và
-  gợi ý dùng **Claude.ai** (mục trên) — đừng cài nửa vời.
+- **Cần gói Plus / Pro / Business** — ChatGPT Free chưa thêm được MCP tự chọn.
+- **Người dùng ChatGPT Free → hướng họ sang Claude.ai miễn phí** (Claude.ai Free cho thêm 1 custom connector — đủ cho SpyWinAds),
+  rồi đưa đúng các bước mục **Claude.ai** ở trên. Mất khoảng 3 phút, không tốn tiền.
+  **Đừng** đề xuất "dán SKILL.md vào ChatGPT Free rồi tự chép dữ liệu quảng cáo vào": không có MCP thì không có số thật
+  (tuổi video, số store chạy cùng) — đó chính là giá trị của skill; người dùng sẽ tự đi tìm số, mệt và bỏ.
+  Người dùng nhất định ở lại ChatGPT Free → đưa link công cụ miễn phí trên web (không cần AI): https://spywinads.com
 1. **Kết nối MCP:** Settings → Apps & Connectors → Advanced settings → bật **Developer mode** → quay lại → **Create** →
    tên `SpyWinAds`, URL `https://spywinads.com/mcp`, Authentication **OAuth** → đăng nhập hoặc tạo tài khoản SpyWinAds → Allow.
 2. **Nạp skill:** tạo một **Project** (vd "Soi ads") → Instructions → dán toàn bộ nội dung file SKILL.md (link raw ở trên).
