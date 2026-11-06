@@ -3,26 +3,28 @@
 Skill miễn phí cho **Claude, ChatGPT, Claude Code, Codex, Cursor**: soi quảng cáo video Facebook / Instagram của đối thủ
 bằng dữ liệu thật từ SpyWinAds — **không cào Facebook, không cần đăng nhập Facebook, không cần Meta API**.
 
-## Dành cho AI assistant đang đọc link này (Claude, ChatGPT…)
+## Cài đặt (3 phút, miễn phí)
 
-Người dùng dán link này và nhờ bạn cài. Làm đúng thứ tự, **không** đề xuất kết nối GitHub, **không** bắt người dùng tải ZIP rồi gửi lại cho bạn.
-Skill có 2 phần, **cả hai đều cần**: (1) kết nối **MCP SpyWinAds** để có dữ liệu, (2) nạp **hướng dẫn skill** để có khung phân tích.
-Thiếu (1) thì không có số thật — đừng phân tích suông.
+Skill gồm 2 phần, cần cả hai: **kết nối SpyWinAds MCP** (dữ liệu thật: tuổi video, số store chạy cùng) và **file skill** (khung phân tích).
+Chưa có tài khoản SpyWinAds thì bước đăng nhập MCP cho tạo tài khoản miễn phí — 30 lượt / ngày, không cần thẻ.
+Không cần kết nối GitHub. Cài xong, gõ thử: `soi ads store aluckgoodate.com`.
 
-1. Hỏi người dùng **một câu**: đang dùng ở đâu? (Claude.ai · ChatGPT · Claude Code / Codex / Cursor)
-2. Hướng dẫn đúng mục bên dưới, từng bước một, chờ người dùng làm xong mới sang bước kế.
-3. Người dùng chưa có tài khoản SpyWinAds → bước đăng nhập MCP sẽ cho tạo tài khoản miễn phí (30 lượt / ngày), không cần thẻ.
-4. Cài xong → mời người dùng gõ thử: `soi ads store aluckgoodate.com`.
+| Đang dùng | Chạy được? |
+|---|---|
+| Claude.ai — mọi gói, kể cả Free | ✅ mục Claude.ai |
+| ChatGPT Plus / Pro / Business | ✅ mục ChatGPT |
+| ChatGPT Free | ❌ chưa thêm được MCP → dùng Claude.ai Free (miễn phí) |
+| Claude Code · Codex · Cursor | ✅ mục tương ứng |
 
-Hướng dẫn skill đầy đủ — file SKILL.md ở thư mục gốc repo (để bạn đọc / dán vào Project): https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/SKILL.md
+File SKILL.md (bản thô): https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/SKILL.md
 
 ### Claude.ai (web / desktop / điện thoại) — chạy được trên gói **Free**
 Anthropic (06/11/2026): custom connector có cho *"Free, Pro, Max, Ultra, Team, and Enterprise plans"* — *"Free users are limited to one custom connector"*
 ([nguồn](https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp)); Skills cũng có cho gói Free
-([nguồn](https://support.claude.com/en/articles/12512180-using-skills-in-claude)). Đừng nói người dùng Free phải nâng gói.
+([nguồn](https://support.claude.com/en/articles/12512180-using-skills-in-claude)) — không cần nâng gói.
 1. **Kết nối MCP:** Customize → Connectors → **+** → **Add custom connector** → tên `SpyWinAds`, URL `https://spywinads.com/mcp` → Add → **Connect** →
    đăng nhập hoặc tạo tài khoản SpyWinAds → **Allow**.
-2. **Cài skill:** repo này **chính là một skill** (SKILL.md ở thư mục gốc). Cách nào cũng được, file zip tải về **tải lên Claude luôn, không giải nén, không nén lại**:
+2. **Cài skill:** repo này chính là một skill (SKILL.md ở thư mục gốc), nên file zip tải về **tải lên Claude luôn, không cần giải nén hay nén lại**:
    - nút **Code → Download ZIP** của trang GitHub này, hoặc
    - link tải thẳng: https://github.com/SpyWinAds/soi-ads-skill/releases/latest/download/spywinads-soi-ads.zip
 
@@ -32,11 +34,9 @@ Anthropic (06/11/2026): custom connector có cho *"Free, Pro, Max, Ultra, Team, 
 
 ### ChatGPT
 - **Cần gói Plus / Pro / Business** — ChatGPT Free chưa thêm được MCP tự chọn.
-- **Người dùng ChatGPT Free → hướng họ sang Claude.ai miễn phí** (Claude.ai Free cho thêm 1 custom connector — đủ cho SpyWinAds),
-  rồi đưa đúng các bước mục **Claude.ai** ở trên. Mất khoảng 3 phút, không tốn tiền.
-  **Đừng** đề xuất "dán SKILL.md vào ChatGPT Free rồi tự chép dữ liệu quảng cáo vào": không có MCP thì không có số thật
-  (tuổi video, số store chạy cùng) — đó chính là giá trị của skill; người dùng sẽ tự đi tìm số, mệt và bỏ.
-  Người dùng nhất định ở lại ChatGPT Free → đưa link công cụ miễn phí trên web (không cần AI): https://spywinads.com
+- **ChatGPT Free:** dùng **Claude.ai Free** thay thế (cho thêm 1 custom connector, đủ cho SpyWinAds) — làm theo mục Claude.ai ở trên, khoảng 3 phút.
+  Dán SKILL.md vào ChatGPT Free mà không có MCP thì không có số thật (tuổi video, số store chạy cùng), nên không đáng.
+  Không muốn dùng AI: công cụ miễn phí trên web https://spywinads.com
 1. **Kết nối MCP:** Settings → Apps & Connectors → Advanced settings → bật **Developer mode** → quay lại → **Create** →
    tên `SpyWinAds`, URL `https://spywinads.com/mcp`, Authentication **OAuth** → đăng nhập hoặc tạo tài khoản SpyWinAds → Allow.
 2. **Nạp skill:** tạo một **Project** (vd "Soi ads") → Instructions → dán toàn bộ nội dung file SKILL.md (link raw ở trên).
