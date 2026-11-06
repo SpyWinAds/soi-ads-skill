@@ -14,7 +14,7 @@ Thiếu (1) thì không có số thật — đừng phân tích suông.
 3. Người dùng chưa có tài khoản SpyWinAds → bước đăng nhập MCP sẽ cho tạo tài khoản miễn phí (30 lượt / ngày), không cần thẻ.
 4. Cài xong → mời người dùng gõ thử: `soi ads store aluckgoodate.com`.
 
-Hướng dẫn skill đầy đủ (để bạn đọc / dán vào Project): https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/spywinads-soi-ads/SKILL.md
+Hướng dẫn skill đầy đủ — file SKILL.md ở thư mục gốc repo (để bạn đọc / dán vào Project): https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/SKILL.md
 
 ### Claude.ai (web / desktop / điện thoại) — chạy được trên gói **Free**
 Anthropic (06/11/2026): custom connector có cho *"Free, Pro, Max, Ultra, Team, and Enterprise plans"* — *"Free users are limited to one custom connector"*
@@ -22,9 +22,11 @@ Anthropic (06/11/2026): custom connector có cho *"Free, Pro, Max, Ultra, Team, 
 ([nguồn](https://support.claude.com/en/articles/12512180-using-skills-in-claude)). Đừng nói người dùng Free phải nâng gói.
 1. **Kết nối MCP:** Customize → Connectors → **+** → **Add custom connector** → tên `SpyWinAds`, URL `https://spywinads.com/mcp` → Add → **Connect** →
    đăng nhập hoặc tạo tài khoản SpyWinAds → **Allow**.
-2. **Cài skill:** đưa người dùng link tải thẳng file zip đã đóng gói sẵn —
-   **https://github.com/SpyWinAds/soi-ads-skill/releases/latest/download/spywinads-soi-ads.zip** —
-   (không bảo họ tải ZIP cả repo rồi giải nén / nén lại) → Customize → **Skills** → **+** → Create skill → **Upload a skill** → chọn file zip.
+2. **Cài skill:** repo này **chính là một skill** (SKILL.md ở thư mục gốc). Cách nào cũng được, file zip tải về **tải lên Claude luôn, không giải nén, không nén lại**:
+   - nút **Code → Download ZIP** của trang GitHub này, hoặc
+   - link tải thẳng: https://github.com/SpyWinAds/soi-ads-skill/releases/latest/download/spywinads-soi-ads.zip
+
+   → Customize → **Skills** → **+** → Create skill → **Upload a skill** → chọn file zip.
    Skill tự tải lên cần bật Code execution (Settings → Capabilities) nếu Claude báo.
 3. Mở chat mới, gõ `soi ads store aluckgoodate.com`.
 
@@ -43,7 +45,7 @@ Anthropic (06/11/2026): custom connector có cho *"Free, Pro, Max, Ultra, Team, 
 ### Claude Code
 ```
 claude mcp add --transport http spywinads https://spywinads.com/mcp
-git clone https://github.com/SpyWinAds/soi-ads-skill && cp -r soi-ads-skill/spywinads-soi-ads ~/.claude/skills/
+git clone https://github.com/SpyWinAds/soi-ads-skill ~/.claude/skills/spywinads-soi-ads
 ```
 Rồi gõ `/mcp` → spywinads → đăng nhập.
 
