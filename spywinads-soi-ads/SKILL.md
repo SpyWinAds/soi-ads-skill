@@ -99,7 +99,7 @@ Skill chỉ đọc dữ liệu SpyWinAds; không cào Facebook, không đăng nh
 
 Tạo tài khoản ở bước đăng nhập — miễn phí, 30 lượt/ngày, không cần thẻ.
 
-- **Claude.ai** (web / desktop / điện thoại): Settings → Connectors → Add custom connector → URL `https://spywinads.com/mcp` → Connect → đăng nhập → Allow.
+- **Claude.ai** (cả gói Free — 1 connector): Customize → Connectors → + → Add custom connector → URL `https://spywinads.com/mcp` → Connect → đăng nhập → Allow.
 - **ChatGPT** (Plus / Pro / Business — bản Free chưa thêm được MCP tự chọn, gợi ý dùng Claude.ai): Settings → Apps & Connectors → Advanced →
   bật Developer mode → Create → URL `https://spywinads.com/mcp`, OAuth → đăng nhập → Allow.
 - **Claude Code**: `claude mcp add --transport http spywinads https://spywinads.com/mcp` rồi gõ `/mcp` để đăng nhập.

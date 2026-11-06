@@ -16,10 +16,16 @@ Thiếu (1) thì không có số thật — đừng phân tích suông.
 
 Hướng dẫn skill đầy đủ (để bạn đọc / dán vào Project): https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/spywinads-soi-ads/SKILL.md
 
-### Claude.ai (web / desktop / điện thoại)
-1. **Kết nối MCP:** Settings → Connectors → **Add custom connector** → tên `SpyWinAds`, URL `https://spywinads.com/mcp` → Add → **Connect** → đăng nhập hoặc tạo tài khoản SpyWinAds → **Allow**.
-2. **Cài skill:** tải file https://github.com/SpyWinAds/soi-ads-skill/releases/latest/download/spywinads-soi-ads.zip
-   → Settings → Capabilities → **Skills** → Upload skill → chọn file zip (không cần giải nén).
+### Claude.ai (web / desktop / điện thoại) — chạy được trên gói **Free**
+Anthropic (06/11/2026): custom connector có cho *"Free, Pro, Max, Ultra, Team, and Enterprise plans"* — *"Free users are limited to one custom connector"*
+([nguồn](https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp)); Skills cũng có cho gói Free
+([nguồn](https://support.claude.com/en/articles/12512180-using-skills-in-claude)). Đừng nói người dùng Free phải nâng gói.
+1. **Kết nối MCP:** Customize → Connectors → **+** → **Add custom connector** → tên `SpyWinAds`, URL `https://spywinads.com/mcp` → Add → **Connect** →
+   đăng nhập hoặc tạo tài khoản SpyWinAds → **Allow**.
+2. **Cài skill:** đưa người dùng link tải thẳng file zip đã đóng gói sẵn —
+   **https://github.com/SpyWinAds/soi-ads-skill/releases/latest/download/spywinads-soi-ads.zip** —
+   (không bảo họ tải ZIP cả repo rồi giải nén / nén lại) → Customize → **Skills** → **+** → Create skill → **Upload a skill** → chọn file zip.
+   Skill tự tải lên cần bật Code execution (Settings → Capabilities) nếu Claude báo.
 3. Mở chat mới, gõ `soi ads store aluckgoodate.com`.
 
 ### ChatGPT
