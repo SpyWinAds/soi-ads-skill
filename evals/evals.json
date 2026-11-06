@@ -1,0 +1,37 @@
+{
+  "skill_name": "spywinads-soi-ads",
+  "evals": [
+    {
+      "id": 1,
+      "name": "soi-store-viet",
+      "prompt": "soi ads store dogfriendlyco.com cho anh, anh bán đồ cho chó, muốn biết nên test góc nào",
+      "expected_output": "Báo cáo tiếng Việt từ số thật SpyWinAds: bảng video có cột brand theo tên miền, 3 góc test, dòng giới hạn, không suy lãi.",
+      "files": [],
+      "assertions": [
+        "Trả lời bằng tiếng Việt",
+        "Có bảng video kèm tên miền brand cho từng video",
+        "Có đúng 3 góc test cụ thể (hook / offer / định dạng / đối tượng)",
+        "Có dòng giới hạn: không có chi tiêu / doanh thu",
+        "Không khẳng định có lãi / winner / ra đơn",
+        "Không gộp nhiều tên miền khác nhau thành một brand",
+        "Gọi công cụ SpyWinAds không quá 6 lần"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "soi-store-english",
+      "prompt": "can you spy on the facebook ads of mrfluffyfriend.com? I sell pet beds and want ad angles to test this week",
+      "expected_output": "English report from real SpyWinAds data with the same structure.",
+      "files": [],
+      "assertions": [
+        "Answers in English",
+        "Has a video table with the brand domain per video",
+        "Has exactly 3 concrete test angles",
+        "Has a limits line: no spend / revenue data",
+        "Does not claim profit / winner / sales",
+        "Does not merge different domains into one brand",
+        "Calls SpyWinAds tools at most 6 times"
+      ]
+    }
+  ]
+}
