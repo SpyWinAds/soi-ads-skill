@@ -1,106 +1,121 @@
 ---
 name: spywinads-soi-ads
-description: Soi quảng cáo video Facebook / Instagram của đối thủ bằng dữ liệu thật từ SpyWinAds MCP — tuổi thật của video (ngày file lên Meta lần đầu), bao nhiêu store đang chạy cùng video, store / Fanpage / sản phẩm đang đẩy gì, xếp hạng video đáng test, Hook · Offer · CTA, 3 góc test, CSV nhập Shopify. Dùng ngay khi người dùng dán link Ad Library, link store, link Fanpage hay link sản phẩm, hoặc nói "soi ads", "spy ads", "check quảng cáo đối thủ", "video này chạy bao lâu", "bao nhiêu shop chạy video này", "Fanpage này chạy ads gì", "tìm sản phẩm win", "góc test quảng cáo", "copy sản phẩm sang Shopify" — kể cả khi không nhắc tên SpyWinAds. Also use for "spy on competitor Facebook ads", "what ads is this Shopify store running", "how old is this ad", "winning product research", "ad angles to test", or any Meta Ad Library / dropshipping competitor research.
-compatibility: Cần kết nối SpyWinAds MCP (https://spywinads.com/mcp, tài khoản miễn phí 30 lượt/ngày). Chạy trên Claude.ai, Claude Code, ChatGPT (Plus trở lên), Cursor, Codex.
+description: Full competitor analysis of Facebook / Instagram video ads with real SpyWinAds data — each video's real age (the day the file first hit Meta), how many stores run the same video, what a store / Page / product is pushing, a ranking of videos worth testing, Hook · Offer · CTA, 3 test angles and a Shopify-import CSV. Use when the user wants an analysis rather than a single lookup: several stores or Pages, "which videos should I test", "ad angles", "winning product research", "spy on competitor Facebook ads", "soi ads đối thủ", "phân tích quảng cáo đối thủ", "tìm sản phẩm win", "góc test quảng cáo" — even if SpyWinAds is not mentioned. For a single quick lookup the narrower skills (spywinads-store-spy, spywinads-page-lookup, spywinads-video-age, spywinads-product-clone) fit better if they are installed.
+compatibility: Needs the SpyWinAds MCP connection (https://spywinads.com/mcp, free account, 30 credits a day). Runs on Claude.ai, Claude Code, ChatGPT (Plus and up), Cursor, Codex.
 license: MIT
 ---
 
-# Soi ads đối thủ với SpyWinAds
+# Competitor ad analysis with SpyWinAds
 
-Dữ liệu đến từ **SpyWinAds MCP**: kho quảng cáo video Meta hiển thị tại Mỹ do người dùng SpyWinAds quét. Hai thứ làm kho này khác
-các công cụ cào Ad Library, và cũng là hai thứ người dùng cần nghe rõ nhất:
+Data comes from the **SpyWinAds MCP**: a library of Meta video ads shown in the US, scanned by SpyWinAds users. Two things set it
+apart from Ad Library scrapers, and they are what users most need to hear clearly:
 
-- **Tuổi thật của video** = ngày file video lên Facebook lần đầu. Ngày bật quảng cáo bị reset mỗi khi store tắt rồi bật lại; tuổi file thì không.
-- **Vân tay video**: cùng một video chạy ở nhiều store được nhận ra là một → đếm được *bao nhiêu store khác nhau* đang chạy nó.
+- **Real video age** = the day the video file was first uploaded to Meta. The ad start date resets each time a store pauses and
+  restarts an ad; the file date does not.
+- **Video fingerprints**: the same video running in many stores is recognised as one → you can count *how many different stores*
+  run it.
 
-Trả lời bằng ngôn ngữ người dùng đang viết.
+Answer in the user's language, including table headers.
 
-## 0. Kiểm kết nối trước khi làm gì khác
+## 0. Check the connection first
 
-Không thấy công cụ nào tên `spywin_*` → người dùng chưa kết nối. Đừng đoán số hay phân tích từ trí nhớ — người dùng sẽ tin các con số đó.
-Hướng dẫn kết nối theo nơi họ đang dùng (mục **Cài đặt** cuối file), rồi chờ họ làm xong.
+No tool named `spywin_*` available → the user has not connected SpyWinAds yet. Do not guess numbers or analyse from memory: the user
+will trust those numbers. Say in one line what they get once connected (real video age and how many stores run each video, straight
+from the library), give the setup steps for where they are (section **Setup** at the end), and wait until they are connected.
 
-Mỗi lần gọi công cụ trừ 1 lượt (miễn phí 30 lượt/ngày, gói trả phí 100) nên **gom việc**: gọi đúng công cụ, không gọi lại cùng một đầu vào.
-Công cụ báo hết lượt / chưa đăng nhập → nói đúng thông báo đó kèm link `https://spywinads.com/developers`.
+Each SpyWinAds tool call uses 1 credit (free: 30 a day, paid plans: 100), so **batch the work**: call the right tool once per input,
+never twice for the same input. If a tool says out of credits or not signed in, repeat that message and link
+`https://spywinads.com/developers`.
 
-## 1. Đầu vào → công cụ
+## 1. Input → tool
 
-| Người dùng đưa | Gọi | Nhận được |
+| The user gives | Call | You get |
 |---|---|---|
-| Tên miền store (`shop.com`) | `spywin_spy_store_ads` | QC đang chạy, QC mới 7 ngày, video top, sản phẩm top |
-| Link / ID Fanpage | `spywin_get_page_ads` | Video của Page + các store Page đẩy traffic về |
-| Link Ad Library / ID quảng cáo | `spywin_lookup_video_ad` (`ad`) | Tuổi thật, store đang chạy / từng chạy, store sớm nhất trong kho |
-| `video_id` có sẵn từ kết quả khác | `spywin_lookup_video_ad` (`video_id`) | Như trên — không cần hỏi người dùng link quảng cáo |
-| Link sản phẩm Shopify | `spywin_export_shopify_product` | Tiêu đề, giá, biến thể, ảnh, link CSV nhập Shopify (24 giờ), video QC của sản phẩm |
-| Từ khoá sản phẩm | `spywin_queue_keyword_scan` → `spywin_get_scan_status` → `spywin_get_scan_results` | App SpyWinAds trên máy người dùng đi quét |
-| Tab của chính họ (Win, Tiềm năng, Scale…) | `spywin_get_my_overview` · `spywin_list_my_videos` · `spywin_get_video_history` | Số liệu tài khoản của họ |
+| Store domain (`shop.com`) | `spywin_spy_store_ads` | Live ads, new ads in 7 days, top videos, top products |
+| Facebook Page link / ID | `spywin_get_page_ads` | The Page's videos + the stores it sends traffic to |
+| Ad Library link / ad ID | `spywin_lookup_video_ad` (`ad`) | Real age, stores running / that ran it, earliest stores in the library |
+| A `video_id` from another result | `spywin_lookup_video_ad` (`video_id`) | Same as above, no need to ask for an ad link (older connectors without `video_id`: ask for the Ad Library link) |
+| Shopify product link | `spywin_export_shopify_product` | Title, prices, variants, images, Shopify CSV link (24 hours), the product's video ads |
+| Product keyword | `spywin_queue_keyword_scan` → `spywin_get_scan_status` → `spywin_get_scan_results` | The SpyWinAds app on the user's computer runs the scan |
+| Their own tabs (Win, Potential, Scale…) | `spywin_get_my_overview` · `spywin_list_my_videos` · `spywin_get_video_history` | Their own account data |
 
-**Từ khoá** chạy bằng app SpyWinAds trên máy người dùng (quét bằng mạng nhà họ), không phải máy chủ. Đọc `status` công cụ trả về:
-`cached` → đọc kết quả ngay · `queued` → báo đang quét, vài phút sau gọi `spywin_get_scan_status` · `app_off` / `no_app` / `fb_paused` →
-nói đúng bước tiếp theo công cụ đưa (mở app, cài app tại spywinads.com, chờ tới giờ X). Đừng tự hứa thời gian xong.
-Không có công cụ quét → nói thẳng tìm theo từ khoá cần app SpyWinAds, rồi xin một store / Fanpage / link QC để soi ngay.
+**Keywords** run through the SpyWinAds desktop app on the user's computer (their home connection), not the server. Read the `status`
+the tool returns: `cached` → read the results now · `queued` → say it is scanning, check `spywin_get_scan_status` a few minutes later ·
+`app_off` / `no_app` / `fb_paused` → give exactly the next step the tool states (open the app, install it from spywinads.com, wait until
+time X). Never promise a finish time yourself. No scan tool available → say keyword search needs the SpyWinAds app, and ask for a
+store / Page / ad link to analyse right away.
 
-**Kho chưa có** (`found: false`) → có `spywin_queue_page_scan` thì hỏi người dùng một câu rồi gọi (`kind` = page / store / ad), theo dõi bằng
-`spywin_get_scan_status(request_id=…)`, xong thì gọi lại công cụ tra cứu. Không có công cụ đó → đưa link quét miễn phí công cụ trả về.
+**Not in the library** (`found: false`) → call `spywin_queue_page_scan` only if it is in your tool list (ask one short question first,
+`kind` = page / store / ad), follow with `spywin_get_scan_status(request_id=…)`, then look up again. Not in your tool list → give the
+free scan link the tool returned.
 
-## 2. Đọc số cho đúng
+## 2. Read the numbers correctly
 
-Phần lớn sai lầm khi phân tích nằm ở đây, nên đọc kỹ trước khi kết luận:
+Most analysis mistakes happen here, so read this before concluding anything:
 
-- `stores_running_now` = store **đang** chạy video; `stores_ever` = store **từng** chạy. Lịch sử theo đêm (`spywin_get_video_history`) đếm theo
-  từng đêm nên có thể khác số trong tab — đó không phải mâu thuẫn.
-- **Gom theo brand bằng tên miền trang đích** (`landing_page`), không theo câu chữ quảng cáo. Hai store dùng câu hook giống nhau vẫn là hai brand.
-- Kho chỉ thấy **số QC tối thiểu** quan sát được — không có chi tiêu, reach, đơn hay doanh thu. Vì thế "chạy lâu", "nhiều QC", "nhiều store"
-  là dấu hiệu *đang được đầu tư / bị chép*, không chứng minh có lãi: một brand lớn có thể chạy lỗ để lấy khách, một store có thể đổ hàng trăm QC
-  để test rồi bỏ. Nói "đáng xem vì…", không nói "đang lãi", "winner", "ra đơn".
+- **Video age** = `video_first_on_meta`, shown as date + days counted from today ("22 Sep (52 days)"). Empty → the file date is
+  unknown: give `first_ad` and say it is the first ad date, not the video age.
+- **Scope**: `live_ads` counts only the store / Page / product you looked up (whole library for a single-video lookup).
+  `stores_running_now`, `stores_ever` and `pages_running_now` count every store in the library. A paused store can show a video
+  that other stores still run: say so, it is not a contradiction. Nightly history (`spywin_get_video_history`) counts per night and
+  can differ from these live counts.
+- **Group brands by the landing-page domain** (`landing_page`), never by ad copy. Two stores with the same hook are still two brands.
+- The library only sees a **minimum count of ads observed**: no spend, reach, orders or revenue. "Long run", "many ads", "many
+  stores" mean *being invested in or copied*, not profitable: a big brand can run at a loss to buy customers, a store can pour
+  hundreds of ads into a test and drop it. Say "worth a look because…", never "profitable", "winner", "making sales".
+- A product name that looks like a code is the store's URL handle: say it is not readable and give the landing page.
 
-## 3. Xếp hạng video đáng test
+## 3. Rank the videos worth testing
 
-Chấm từng video và giải thích bằng số:
+Score each video and explain it with numbers:
 
-- **Bị chép rộng** (`stores_running_now` ≥ 3): nhiều store khác nhau trả tiền chạy cùng video → sản phẩm đang được thử rộng.
-- **Còn mới + còn chạy** (tuổi file ≤ 30 ngày, `live_ads` > 0): đang được đẩy, chưa bão hoà.
-- **Video cũ quay lại**: tuổi file > 60 ngày nhưng QC đầu tiên mới → có người khai thác lại video cũ.
-- **Một store đổ rất nhiều QC**: đang test mạnh / chia nhóm QC — chưa chứng minh bán được.
+- **Copied widely** (`stores_running_now` ≥ 3, or `stores_ever` ≥ 5): several stores pay to run the same video → the product is being
+  tested broadly.
+- **Fresh and live** (video age ≤ 30 days, `live_ads` > 0): being pushed, not saturated yet.
+- **Old video coming back**: video age > 60 days but a recent first ad → someone is reusing an old video.
+- **One store pouring in ads**: heavy testing / ad-set splitting, not proof of sales.
 
-Điểm gợi ý để xếp thứ tự (nói rõ là ước lượng): `3 × store đang chạy + min(QC sống, 50) / 5 + (tuổi ≤ 14 ngày: 5 · ≤ 30: 3 · còn lại: 0)`.
+Suggested score for ordering (say it is an estimate): `3 × stores running now + min(live ads, 50) / 5 + (age ≤ 14 days: 5 · ≤ 30: 3 · else: 0)`.
 
 ## 4. Hook · Offer · CTA
 
-Công cụ trả tên sản phẩm + trang đích, không trả nguyên video. Nên:
+The tools return the product name and landing page, not the video itself. So:
 
-1. **Offer** — gọi `spywin_export_shopify_product` cho trang đích của 1–2 video top (đọc được cả shop chặn công cụ đọc web thường): tiêu đề hay
-   chứa câu gấp gáp ("Last Day – 60% OFF"), giá, biến thể, và các video QC khác của cùng sản phẩm. Có công cụ đọc web thì đọc thêm trang đích:
-   combo, freeship, bảo hành, quà tặng.
-2. Có trình duyệt / công cụ đọc web: mở link Ad Library để lấy chữ QC → **Hook** (câu đầu), **CTA**, **định dạng**.
-3. Không đọc được thì ghi "chưa đọc được" — người dùng sẽ dùng bảng này để quay video thật, một hook bịa làm họ mất tiền test.
+1. **Offer** — call `spywin_export_shopify_product` on the landing page of the top 1–2 videos (it reads shops that block ordinary web
+   readers): titles often carry urgency ("Last Day – 60% OFF"), price, variants, and the product's other video ads. If you can read
+   web pages, read the landing page too: bundles, free shipping, warranty, gifts.
+2. With a browser / web reader: open the Ad Library link to get the ad text → **Hook** (first line), **CTA**, **format**.
+3. Cannot read it → write "not read". Users shoot real videos from this table; an invented hook costs them real test money.
 
-## 5. Báo cáo
+## 5. Report
 
-Dùng khung này:
+Use this layout (in the user's language):
 
-**Tóm tắt** — 2–3 câu: đối thủ đang đẩy gì, mức độ (QC sống, store, độ mới).
+**Summary** — 2–3 sentences: what the competitor pushes, how hard (live ads, stores, freshness).
 
-| # | Sản phẩm | Brand (tên miền) | Tuổi thật | Store đang / từng chạy | QC sống | Hook | Offer | CTA · Định dạng | Vì sao đáng xem |
+| # | Product | Brand (domain) | Video age | Stores running now / ever | Live ads | Hook | Offer | CTA · Format | Why it is worth a look |
 |---|---|---|---|---|---|---|---|---|---|
 
-**Pattern chung** — cùng kiểu offer, góc hook, mùa vụ.
-**Khoảng trống** — góc chưa ai khai thác (đối tượng, nỗi đau, offer khác); nói rõ là đề xuất.
-**3 góc test** — mỗi góc 2–3 dòng: hook câu đầu · offer · định dạng · đối tượng.
-**Giới hạn** — một dòng: số đếm là QC quan sát được tối thiểu, không có chi tiêu / doanh thu.
-**Bước tiếp** (người dùng chọn): `spywin_lookup_video_ad` cho video top để xem store khác đang chạy cùng · CSV nhập Shopify · app SpyWinAds
-(`https://spywinads.com`) để quét từ khoá hằng ngày và có tab Win / Tiềm năng / Scale tự cập nhật.
+**Common pattern** — same kind of offer, hook angle, season.
+**Gaps** — angles nobody uses yet (audience, pain point, different offer); say these are suggestions.
+**3 test angles** — 2–3 lines each: first-line hook · offer · format · audience.
+**Limits** — one line: counts are minimum ads observed, no spend / revenue.
+**Next step** — offer in plain words and call the tool yourself if the user picks one: the other stores running the top video
+(`spywin_lookup_video_ad`) · a Shopify CSV (`spywin_export_shopify_product`) · the SpyWinAds app (`https://spywinads.com`) for daily
+keyword scans and Win / Potential / Scale tabs that update themselves.
 
-## Giới hạn của skill
+## Limits of this skill
 
-Skill chỉ đọc dữ liệu SpyWinAds; không cào Facebook, không đăng nhập Facebook hộ người dùng — vừa trái điều khoản Meta vừa dễ khoá tài khoản họ.
+It only reads SpyWinAds data: it does not scrape Facebook and never logs in to the user's Facebook account.
 
-## Cài đặt (đưa người dùng khi chưa kết nối)
+## Setup (give this to users who are not connected)
 
-Tạo tài khoản ở bước đăng nhập — miễn phí, 30 lượt/ngày, không cần thẻ.
+Sign-up happens at the login step: free, 30 credits a day, no card.
 
-- **Claude.ai** (cả gói Free — 1 connector): Customize → Connectors → + → Add custom connector → URL `https://spywinads.com/mcp` → Connect → đăng nhập → Allow.
-- **ChatGPT** (Plus / Pro / Business — bản Free chưa thêm được MCP tự chọn, gợi ý dùng Claude.ai): Settings → Apps & Connectors → Advanced →
-  bật Developer mode → Create → URL `https://spywinads.com/mcp`, OAuth → đăng nhập → Allow.
-- **Claude Code**: `claude mcp add --transport http spywinads https://spywinads.com/mcp` rồi gõ `/mcp` để đăng nhập.
-- **Cursor / Codex / script**: khoá API tại `https://spywinads.com/developers`, header `Authorization: Bearer <khoá>` (không đặt khoá trong link).
+- **Claude.ai** (every plan incl. Free, 1 custom connector): Customize → Connectors → + → Add custom connector → URL
+  `https://spywinads.com/mcp` → Connect → sign in → Allow.
+- **ChatGPT** (Plus / Pro / Business; Free cannot add custom MCP yet, suggest Claude.ai Free): Settings → Apps & Connectors → Advanced →
+  Developer mode → Create → URL `https://spywinads.com/mcp`, OAuth → sign in → Allow.
+- **Claude Code**: `claude mcp add --transport http spywinads https://spywinads.com/mcp`, then type `/mcp`, pick spywinads and finish
+  the sign-in in the browser (adding it alone does not connect it).
+- **Cursor / Codex / scripts**: API key at `https://spywinads.com/developers`, header `Authorization: Bearer <key>` (never in the URL).

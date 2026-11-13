@@ -1,83 +1,92 @@
-# Skill soi ads đối thủ — SpyWinAds (FREE)
+# Competitor ad analysis — spy on Facebook video ads with SpyWinAds (free skill)
 
-Skill miễn phí cho **Claude, ChatGPT, Claude Code, Codex, Cursor**: soi quảng cáo video Facebook / Instagram của đối thủ
-bằng dữ liệu thật từ SpyWinAds — **không cào Facebook, không cần đăng nhập Facebook, không cần Meta API**.
+Free skill for **Claude, ChatGPT, Claude Code, Codex, Cursor**, powered by real SpyWinAds data. No Facebook scraping, no Facebook login,
+no Meta API key.
+Skill miễn phí: **Soi ads đối thủ đầy đủ (xếp hạng video, Hook · Offer · CTA, 3 góc test)** bằng dữ liệu thật của SpyWinAds. Không cào Facebook, không đăng nhập Facebook.
 
-## Cài đặt (3 phút, miễn phí)
+Free web tools, no AI needed: https://spywinads.com
 
-Skill gồm 2 phần, cần cả hai: **kết nối SpyWinAds MCP** (dữ liệu thật: tuổi video, số store chạy cùng) và **file skill** (khung phân tích).
-Chưa có tài khoản SpyWinAds thì bước đăng nhập MCP cho tạo tài khoản miễn phí — 30 lượt / ngày, không cần thẻ.
-Không cần kết nối GitHub. Cài xong, gõ thử: `soi ads store aluckgoodate.com`.
+## What it does
 
-| Đang dùng | Chạy được? |
+| You give | You get |
 |---|---|
-| Claude.ai — mọi gói, kể cả Free | ✅ mục Claude.ai |
-| ChatGPT Plus / Pro / Business | ✅ mục ChatGPT |
-| ChatGPT Free | ❌ chưa thêm được MCP → dùng Claude.ai Free (miễn phí) |
-| Claude Code · Codex · Cursor | ✅ mục tương ứng |
+| A store domain `shop.com` | Live ads, new ads in 7 days, top videos, products it pushes |
+| An Ad Library link | **Real age** of the video (day the file first hit Meta) + **how many stores** run it |
+| A Facebook Page link | The Page's videos + the stores it sends traffic to |
+| A Shopify product link | Title, price, variants, images + **Shopify-import CSV** |
+| A keyword | The SpyWinAds desktop app scans on your computer, then the AI reads the results (needs the app) |
 
-File SKILL.md (bản thô): https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/SKILL.md
+Then: ranking of videos worth testing · Hook · Offer · CTA · 3 concrete test angles.
 
-### Claude.ai (web / desktop / điện thoại) — chạy được trên gói **Free**
-Anthropic (06/11/2026): custom connector có cho *"Free, Pro, Max, Ultra, Team, and Enterprise plans"* — *"Free users are limited to one custom connector"*
-([nguồn](https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp)); Skills cũng có cho gói Free
-([nguồn](https://support.claude.com/en/articles/12512180-using-skills-in-claude)) — không cần nâng gói.
-1. **Kết nối MCP:** Customize → Connectors → **+** → **Add custom connector** → tên `SpyWinAds`, URL `https://spywinads.com/mcp` → Add → **Connect** →
-   đăng nhập hoặc tạo tài khoản SpyWinAds → **Allow**.
-2. **Cài skill:** repo này chính là một skill (SKILL.md ở thư mục gốc), nên file zip tải về **tải lên Claude luôn, không cần giải nén hay nén lại**:
-   - nút **Code → Download ZIP** của trang GitHub này, hoặc
-   - link tải thẳng: https://github.com/SpyWinAds/soi-ads-skill/releases/latest/download/spywinads-soi-ads.zip
+## How it differs from Ad Library scraper skills
 
-   → Customize → **Skills** → **+** → Create skill → **Upload a skill** → chọn file zip.
-   Skill tự tải lên cần bật Code execution (Settings → Capabilities) nếu Claude báo.
-3. Mở chat mới, gõ `soi ads store aluckgoodate.com`.
+| | Ad Library scraper skills | This skill |
+|---|---|---|
+| Ad age | Days the ad has run — resets when a store pauses and restarts | **Real video age**: day the file first hit Meta |
+| Signal | Number of variants of **one** shop | **How many different stores** run the same video (video fingerprints) |
+| Data | Browser automation — breaks when Facebook changes its layout, blocked by IP | SpyWinAds library over MCP, ready |
+| After the analysis | Test angles | Test angles + **Shopify CSV** + the stores running the same video |
 
-### ChatGPT
-- **Cần gói Plus / Pro / Business** — ChatGPT Free chưa thêm được MCP tự chọn.
-- **ChatGPT Free:** dùng **Claude.ai Free** thay thế (cho thêm 1 custom connector, đủ cho SpyWinAds) — làm theo mục Claude.ai ở trên, khoảng 3 phút.
-  Dán SKILL.md vào ChatGPT Free mà không có MCP thì không có số thật (tuổi video, số store chạy cùng), nên không đáng.
-  Không muốn dùng AI: công cụ miễn phí trên web https://spywinads.com
-1. **Kết nối MCP:** Settings → Apps & Connectors → Advanced settings → bật **Developer mode** → quay lại → **Create** →
-   tên `SpyWinAds`, URL `https://spywinads.com/mcp`, Authentication **OAuth** → đăng nhập hoặc tạo tài khoản SpyWinAds → Allow.
-2. **Nạp skill:** tạo một **Project** (vd "Soi ads") → Instructions → dán toàn bộ nội dung file SKILL.md (link raw ở trên).
-3. Trong Project đó: bật SpyWinAds ở nút **+** → Developer mode, rồi gõ `soi ads store aluckgoodate.com`.
+## Setup (3 minutes, free)
+
+Two parts, you need both: **connect the SpyWinAds MCP** (the data) and **add this skill** (the instructions). The MCP sign-in step creates a
+free SpyWinAds account: 30 credits a day, no card. No GitHub account needed. Then try: `spy on the Facebook ads of achandise.com and give me 3 ad angles to test`
+
+| You use | Works? |
+|---|---|
+| Claude.ai, any plan incl. Free | ✅ |
+| ChatGPT Plus / Pro / Business | ✅ |
+| ChatGPT Free | ❌ cannot add MCP yet → use Claude.ai Free |
+| Claude Code · Codex · Cursor | ✅ |
+
+### Claude.ai (web, desktop, mobile), works on **Free**
+Custom connectors are available on Free (one connector) and Skills too
+([connectors](https://support.claude.com/en/articles/11175166-getting-started-with-custom-connectors-using-remote-mcp),
+[skills](https://support.claude.com/en/articles/12512180-using-skills-in-claude)).
+1. **Connect:** Customize → Connectors → **+** → **Add custom connector** → name `SpyWinAds`, URL `https://spywinads.com/mcp` → Add →
+   **Connect** → sign in or create a SpyWinAds account → **Allow**.
+2. **Add the skill:** this repo *is* the skill (SKILL.md at the root), so the zip uploads as is, **no unzipping**:
+   - **Code → Download ZIP** on this page, or
+   - direct link: https://github.com/SpyWinAds/soi-ads-skill/releases/latest/download/spywinads-soi-ads.zip
+
+   → Customize → **Skills** → **+** → Create skill → **Upload a skill** → pick the zip. Turn on Code execution (Settings → Capabilities)
+   if Claude asks.
+3. New chat: `spy on the Facebook ads of achandise.com and give me 3 ad angles to test`
+
+### ChatGPT (Plus / Pro / Business)
+1. Settings → Apps & Connectors → Advanced settings → **Developer mode** on → **Create** → name `SpyWinAds`, URL
+   `https://spywinads.com/mcp`, Authentication **OAuth** → sign in → Allow.
+2. Create a **Project** → Instructions → paste all of
+   [SKILL.md](https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/SKILL.md).
+3. In that Project, turn SpyWinAds on (**+** → Developer mode) and type `spy on the Facebook ads of achandise.com and give me 3 ad angles to test`.
+
+ChatGPT Free cannot add a custom MCP yet: use Claude.ai Free (above), or the free web tool https://spywinads.com.
 
 ### Claude Code
 ```
 claude mcp add --transport http spywinads https://spywinads.com/mcp
 git clone https://github.com/SpyWinAds/soi-ads-skill ~/.claude/skills/spywinads-soi-ads
 ```
-Rồi gõ `/mcp` → spywinads → đăng nhập.
+Then type `/mcp` → spywinads → finish the sign-in in the browser (adding it alone does not connect it).
 
-### Codex / Cursor / agent khác
-Khoá API miễn phí tại https://spywinads.com/developers → MCP `https://spywinads.com/mcp`, header `Authorization: Bearer <khoá>`
-(không đặt khoá trong link). Chép nội dung SKILL.md vào `AGENTS.md` / rules của agent.
+### Codex / Cursor / other agents
+Free API key at https://spywinads.com/developers → MCP `https://spywinads.com/mcp`, header `Authorization: Bearer <key>` (never in the
+URL). Paste SKILL.md into `AGENTS.md` / your rules.
 
-## Skill làm được gì
+## More SpyWinAds skills
 
-| Người dùng đưa | Nhận được |
+| Skill | For |
 |---|---|
-| Tên store `shop.com` | QC đang chạy, QC mới 7 ngày, video top, sản phẩm đang đẩy |
-| Link Ad Library | **Tuổi thật** của video (ngày file lên Meta lần đầu) + **bao nhiêu store** chạy cùng video |
-| Link Fanpage | Video của Page + các store Page đẩy traffic về |
-| Link sản phẩm Shopify | Tiêu đề, giá, biến thể, ảnh + **CSV nhập Shopify** |
-| Từ khoá | App SpyWinAds trên máy bạn đi quét, xong AI đọc kết quả (cần cài app) |
+| [spywinads-soi-ads](https://github.com/SpyWinAds/soi-ads-skill) | Full competitor analysis: ranking, Hook · Offer · CTA, 3 test angles |
+| [spywinads-store-spy](https://github.com/SpyWinAds/shopify-store-spy-skill) | A store's video ads, scaling or testing |
+| [spywinads-page-lookup](https://github.com/SpyWinAds/facebook-page-ads-skill) | A Facebook Page's video ads and the stores behind it |
+| [spywinads-video-age](https://github.com/SpyWinAds/video-ad-age-skill) | Real age of an ad video, who else runs it |
+| [spywinads-product-clone](https://github.com/SpyWinAds/shopify-product-clone-skill) | Any Shopify product → Shopify CSV |
 
-Sau đó: xếp hạng video đáng test · phân tích Hook · Offer · CTA · 3 góc test cụ thể.
+## Limits (plainly)
 
-## Khác gì các skill cào Ad Library
+Free: 30 credits a day (1 tool call = 1 credit; a full analysis usually needs 3–5). Paid plans: 100. Data = Meta ads shown in the US, scanned by
+SpyWinAds users. Counts are the minimum ads observed: **no spend, reach, orders or revenue**. Many ads or many stores means tested or
+copied, **not proven to sell**.
 
-| | Skill cào Ad Library | Skill này |
-|---|---|---|
-| Tuổi quảng cáo | Số ngày QC chạy — store tắt / bật lại là reset | **Tuổi thật của video**: ngày file lên Meta lần đầu |
-| Tín hiệu | Số biến thể của **một** shop | **Bao nhiêu store khác nhau** chạy cùng video (ghép bằng vân tay video) |
-| Lấy dữ liệu | Trình duyệt tự động — hỏng khi Facebook đổi giao diện, bị chặn theo IP | Kho SpyWinAds qua MCP, có sẵn |
-| Sau phân tích | Gợi ý góc test | Góc test + **CSV nhập Shopify** + danh sách store đang chạy cùng video |
-
-## Giới hạn (nói thẳng)
-
-Miễn phí 30 lượt / ngày (mỗi lần AI gọi công cụ = 1 lượt, một lần soi ~3–5 lượt); gói trả phí 100 lượt / ngày.
-Dữ liệu là quảng cáo Meta hiển thị tại Mỹ, do người dùng SpyWinAds quét. Số đếm là số QC quan sát được tối thiểu —
-**không có chi tiêu, reach, đơn hay doanh thu**. Nhiều QC / nhiều store nghĩa là đang được thử hoặc bị chép, **không chứng minh bán được**.
-
-Giấy phép MIT · SpyWinAds — https://spywinads.com
+MIT license · SpyWinAds — https://spywinads.com
