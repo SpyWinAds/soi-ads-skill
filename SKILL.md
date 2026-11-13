@@ -23,7 +23,7 @@ No tool named `spywin_*` available → the user has not connected SpyWinAds yet.
 will trust those numbers. Say in one line what they get once connected (real video age and how many stores run each video, straight
 from the library), give the setup steps for where they are (section **Setup** at the end), and wait until they are connected.
 
-Each SpyWinAds tool call uses 1 credit (free: 30 a day, paid plans: 100), so **batch the work**: call the right tool once per input,
+Each SpyWinAds tool call uses 1 credit (free trial and paid plans: 100 a day, free after the trial: 30), so **batch the work**: call the right tool once per input,
 never twice for the same input. If a tool says out of credits or not signed in, repeat that message and link
 `https://spywinads.com/developers`.
 
@@ -110,7 +110,8 @@ It only reads SpyWinAds data: it does not scrape Facebook and never logs in to t
 
 ## Setup (give this to users who are not connected)
 
-Sign-up happens at the login step: free, 30 credits a day, no card.
+Sign-up happens at the login step, no card. New accounts get a **7-day free trial**: 100 credits a day, plus keyword scans and
+video downloads through the SpyWinAds desktop app. After the trial these lookups stay free at 30 credits a day.
 
 - **Claude.ai** (every plan incl. Free, 1 custom connector): Customize → Connectors → + → Add custom connector → URL
   `https://spywinads.com/mcp` → Connect → sign in → Allow.

@@ -30,7 +30,8 @@ Then: ranking of videos worth testing · Hook · Offer · CTA · 3 concrete test
 ## Setup (3 minutes, free)
 
 Two parts, you need both: **connect the SpyWinAds MCP** (the data) and **add this skill** (the instructions). The MCP sign-in step creates a
-free SpyWinAds account: 30 credits a day, no card. No GitHub account needed. Then try: `spy on the Facebook ads of achandise.com and give me 3 ad angles to test`
+free SpyWinAds account, no card: **7-day free trial** (100 credits a day, plus keyword scans and video downloads with the SpyWinAds
+desktop app), then 30 credits a day for these lookups, still free. No GitHub account needed. Then try: `spy on the Facebook ads of achandise.com and give me 3 ad angles to test`
 
 | You use | Works? |
 |---|---|
@@ -85,7 +86,7 @@ URL). Paste SKILL.md into `AGENTS.md` / your rules.
 
 ## Limits (plainly)
 
-Free: 30 credits a day (1 tool call = 1 credit; a full analysis usually needs 3–5). Paid plans: 100. Data = Meta ads shown in the US, scanned by
+7-day free trial: 100 credits a day. After that, free: 30 credits a day (1 tool call = 1 credit; a full analysis usually needs 3–5). Paid plans: 100. Data = Meta ads shown in the US, scanned by
 SpyWinAds users. Counts are the minimum ads observed: **no spend, reach, orders or revenue**. Many ads or many stores means tested or
 copied, **not proven to sell**.
 
