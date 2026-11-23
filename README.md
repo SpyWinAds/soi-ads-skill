@@ -4,7 +4,10 @@ Free skill for **Claude, ChatGPT, Claude Code, Codex, Cursor**, powered by real 
 no Meta API key.
 Skill miễn phí: **Soi ads đối thủ đầy đủ (xếp hạng video, Hook · Offer · CTA, 3 góc test)** bằng dữ liệu thật của SpyWinAds. Không cào Facebook, không đăng nhập Facebook.
 
-Free web tools, no AI needed: https://spywinads.com
+Free web tools, no AI needed: [spywinads.com](https://spywinads.com?utm_source=github&utm_medium=readme&utm_campaign=soi-ads-skill)
+
+<p align="center"><img src="assets/ask-claude.gif" width="720" alt="Asking Claude how old a Facebook video ad is. SpyWinAds returns 21 days, first ad on 02/11 and the 5 stores running it."></p>
+<p align="center"><sub>A real answer in Claude (question asked in Vietnamese): the video's real age, the first ad date and every store running it.</sub></p>
 
 ## What it does
 
@@ -61,7 +64,7 @@ Custom connectors are available on Free (one connector) and Skills too
    [SKILL.md](https://raw.githubusercontent.com/SpyWinAds/soi-ads-skill/main/SKILL.md).
 3. In that Project, turn SpyWinAds on (**+** → Developer mode) and type `spy on the Facebook ads of achandise.com and give me 3 ad angles to test`.
 
-ChatGPT Free cannot add a custom MCP yet: use Claude.ai Free (above), or the free web tool https://spywinads.com.
+ChatGPT Free cannot add a custom MCP yet: use Claude.ai Free (above), or the free web tool [spywinads.com](https://spywinads.com?utm_source=github&utm_medium=readme&utm_campaign=soi-ads-skill).
 
 ### Claude Code
 ```
@@ -71,7 +74,7 @@ git clone https://github.com/SpyWinAds/soi-ads-skill ~/.claude/skills/spywinads-
 Then type `/mcp` → spywinads → finish the sign-in in the browser (adding it alone does not connect it).
 
 ### Codex / Cursor / other agents
-Free API key at https://spywinads.com/developers → MCP `https://spywinads.com/mcp`, header `Authorization: Bearer <key>` (never in the
+Free API key at [spywinads.com/developers](https://spywinads.com/developers?utm_source=github&utm_medium=readme&utm_campaign=soi-ads-skill) → MCP `https://spywinads.com/mcp`, header `Authorization: Bearer <key>` (never in the
 URL). Paste SKILL.md into `AGENTS.md` / your rules.
 
 ## More SpyWinAds skills
@@ -90,4 +93,4 @@ URL). Paste SKILL.md into `AGENTS.md` / your rules.
 SpyWinAds users. Counts are the minimum ads observed: **no spend, reach, orders or revenue**. Many ads or many stores means tested or
 copied, **not proven to sell**.
 
-MIT license · SpyWinAds — https://spywinads.com
+MIT license · SpyWinAds — [spywinads.com](https://spywinads.com?utm_source=github&utm_medium=readme&utm_campaign=soi-ads-skill)
